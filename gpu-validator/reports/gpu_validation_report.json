@@ -1,0 +1,42 @@
+{
+  "checks": [
+    {
+      "check_name": "gpu",
+      "status": "PASS",
+      "message": "GPU detected",
+      "detail": {
+        "gpu_name": "NVIDIA GeForce GTX 1650",
+        "memory_total": 4096.0,
+        "driver_version": "592.82",
+        "cuda_version": "13.1",
+        "temperature": 53.0,
+        "power_usage": 1.96
+      }
+    },
+    {
+      "check_name": "cuda",
+      "status": "FAILED",
+      "message": "nvcc was not found on PATH; Python 3.10.2"
+    },
+    {
+      "check_name": "pytorch",
+      "status": "FAILED",
+      "message": "PyTorch is not installed: No module named 'torch'"
+    },
+    {
+      "check_name": "benchmark",
+      "status": "SKIPPED",
+      "message": "PyTorch is not installed: No module named 'torch'"
+    }
+  ],
+  "final_result": {
+    "check_name": "final_result",
+    "status": "FAILED",
+    "message": "Core validation failed: pytorch",
+    "detail": {
+      "failed_checks": [
+        "pytorch"
+      ]
+    }
+  }
+}

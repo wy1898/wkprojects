@@ -1,0 +1,2 @@
+[console_scripts]
+gpu-platform = gpu_platform.cli:main

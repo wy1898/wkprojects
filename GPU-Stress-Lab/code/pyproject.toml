@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpu-platform"
+version = "0.1.1"
+description = "GPU 计算环境部署与压力测试平台"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "rich>=13.7",
+    "torch>=2.0",
+]
+
+[project.scripts]
+gpu-platform = "gpu_platform.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
