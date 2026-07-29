@@ -1,0 +1,66 @@
+[
+  {
+    "test_time": "2026-07-29T17:33:34",
+    "duration_seconds": 27.65,
+    "average_utilization": 86.8,
+    "peak_temperature": 72.0,
+    "peak_memory": 369.0,
+    "status": "PASS"
+  },
+  {
+    "test_time": "2026-07-29T17:34:09",
+    "duration_seconds": 15.1,
+    "average_utilization": 86.9,
+    "peak_temperature": 70.0,
+    "peak_memory": 368.0,
+    "status": "PASS"
+  },
+  {
+    "test_time": "2026-07-29T17:34:35",
+    "duration_seconds": 10.13,
+    "average_utilization": 83.9,
+    "peak_temperature": 70.0,
+    "peak_memory": 368.0,
+    "status": "PASS"
+  },
+  {
+    "test_time": "2026-07-29T17:34:58",
+    "duration_seconds": 10.12,
+    "average_utilization": 80.2,
+    "peak_temperature": 70.0,
+    "peak_memory": 369.0,
+    "status": "PASS"
+  },
+  {
+    "test_time": "2026-07-29T17:40:44",
+    "duration_seconds": 10.99,
+    "average_utilization": 84.7,
+    "peak_temperature": 67.0,
+    "peak_memory": 367.0,
+    "status": "PASS"
+  },
+  {
+    "test_time": "2026-07-29T17:41:08",
+    "duration_seconds": 10.13,
+    "average_utilization": 85.2,
+    "peak_temperature": 67.0,
+    "peak_memory": 368.0,
+    "status": "PASS"
+  },
+  {
+    "test_time": "2026-07-29T17:41:23",
+    "duration_seconds": 10.12,
+    "average_utilization": 85.5,
+    "peak_temperature": 69.0,
+    "peak_memory": 372.0,
+    "status": "PASS"
+  },
+  {
+    "test_time": "2026-07-29T18:04:04",
+    "duration_seconds": 60.13,
+    "average_utilization": 90.1,
+    "peak_temperature": 77.0,
+    "peak_memory": 457.0,
+    "status": "PASS"
+  }
+]

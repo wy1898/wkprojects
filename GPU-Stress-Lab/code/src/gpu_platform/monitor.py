@@ -5,73 +5,26 @@
 
 from __future__ import annotations
 
-import csv
-import os
-import re
-import shutil
-import subprocess
 import time
 from typing import Any
 
 from .output import print_error, print_info, print_monitor_status
+from .utils import GpuQueryError, clear_screen, get_logger, read_gpu_metrics
 
 
-_QUERY = (
-    "name,driver_version,memory.total,memory.used,utilization.gpu,"
-    "temperature.gpu,power.draw"
-)
-
-
-def _read_gpu(device: int) -> dict[str, str]:
-    """通过 nvidia-smi 的 query-gpu CSV 接口读取指定 GPU。"""
-    executable = shutil.which("nvidia-smi")
-    if not executable:
-        raise FileNotFoundError("nvidia-smi 未找到，请确认 NVIDIA 驱动已安装")
-
-    command = [
-        executable,
-        f"--id={device}",
-        f"--query-gpu={_QUERY}",
-        "--format=csv,noheader,nounits",
-    ]
-    try:
-        result = subprocess.run(
-            command, capture_output=True, text=True, check=False, timeout=10
-        )
-    except (OSError, subprocess.SubprocessError) as exc:
-        raise RuntimeError(f"读取 GPU 信息失败：{exc}") from exc
-
-    if result.returncode != 0:
-        detail = result.stderr.strip() or result.stdout.strip()
-        if re.search(r"invalid|not found|does not exist|no.*gpu", detail, re.I):
-            raise IndexError(f"GPU 编号 {device} 不存在：{detail}")
-        raise RuntimeError(f"读取 GPU 信息失败：{detail or result.returncode}")
-
-    rows = list(csv.reader(result.stdout.splitlines(), skipinitialspace=True))
-    if not rows or len(rows[0]) != 7:
-        raise RuntimeError("读取 GPU 信息失败：nvidia-smi 返回数据格式无效")
-    names = ("GPU Name", "Driver Version", "Memory Total", "Memory Used",
-             "GPU Utilization", "GPU Temperature", "GPU Power Draw")
-    return dict(zip(names, (value.strip() for value in rows[0])))
-
-
-def _cuda_version() -> str:
-    """读取 nvidia-smi 版本信息中的 CUDA Version。"""
-    executable = shutil.which("nvidia-smi")
-    if not executable:
-        return "Unavailable"
-    try:
-        result = subprocess.run(
-            [executable, "--version"],
-            capture_output=True,
-            text=True,
-            check=False,
-            timeout=10,
-        )
-    except (OSError, subprocess.SubprocessError):
-        return "Unavailable"
-    match = re.search(r"CUDA Version\s*:\s*([\w.]+)", result.stdout)
-    return match.group(1) if match else "Unavailable"
+def _read_gpu(device: int) -> dict[str, Any]:
+    """复用共享采集器，并保留监控模块原有字段接口。"""
+    snapshot = read_gpu_metrics(device)
+    return {
+        "GPU Name": snapshot["name"],
+        "Driver Version": snapshot["driver_version"],
+        "Memory Total": snapshot["memory_total_mib"],
+        "Memory Used": snapshot["memory_used_mib"],
+        "GPU Utilization": snapshot["utilization_percent"],
+        "GPU Temperature": snapshot["temperature_c"],
+        "GPU Power Draw": snapshot["power_draw_w"],
+        "CUDA Version": snapshot["cuda_version"] or "Unavailable",
+    }
 
 
 def _status(data: dict[str, str], device: int, interval: float, started: float) -> dict[str, Any]:
@@ -84,7 +37,7 @@ def _status(data: dict[str, str], device: int, interval: float, started: float) 
         "GPU Temperature (°C)": f"{data['GPU Temperature']} °C",
         "GPU Power Draw (W)": f"{data['GPU Power Draw']} W",
         "Driver Version": data["Driver Version"],
-        "CUDA Version": _cuda_version(),
+        "CUDA Version": data["CUDA Version"],
         "Monitoring Running Time": f"{running}s",
         "Refresh Interval": f"{interval:g}s",
         "GPU Index": str(device),
@@ -93,10 +46,7 @@ def _status(data: dict[str, str], device: int, interval: float, started: float) 
 
 def _clear_screen() -> None:
     """清除当前终端内容，使刷新保持为单一监控界面。"""
-    if os.name == "nt":
-        os.system("cls")
-    else:
-        print("\033[2J\033[H", end="")
+    clear_screen()
 
 
 def run_monitor(interval: float = 1, device: int = 0) -> None:
@@ -110,6 +60,7 @@ def run_monitor(interval: float = 1, device: int = 0) -> None:
         print_error(f"监控参数错误：{exc}")
         return
 
+    logger = get_logger()
     print_info(f"GPU 监控已启动（设备 {device}，刷新间隔 {interval:g}s）")
     started = time.monotonic()
     try:
@@ -117,10 +68,17 @@ def run_monitor(interval: float = 1, device: int = 0) -> None:
             data = _read_gpu(device)
             _clear_screen()
             print_monitor_status(_status(data, device, interval, started))
+            logger.info(
+                "monitor sample device=%s utilization=%s temperature=%s memory=%s",
+                device,
+                data["GPU Utilization"],
+                data["GPU Temperature"],
+                data["Memory Used"],
+            )
             time.sleep(interval)
     except KeyboardInterrupt:
         print_info("Monitoring stopped.")
-    except FileNotFoundError as exc:
+    except (FileNotFoundError, GpuQueryError) as exc:
         print_error(str(exc))
     except IndexError as exc:
         print_error(str(exc))

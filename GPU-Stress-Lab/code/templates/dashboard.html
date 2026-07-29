@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GPU Stress Lab Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <main class="shell">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">GPU-STRESS-LAB V2</p>
+        <h1>GPU 性能压力测试与实时监控</h1>
+      </div>
+      <span id="connection" class="badge muted">连接中</span>
+    </header>
+
+    <section class="cards" aria-label="GPU 状态">
+      <article class="card"><span>GPU 型号</span><strong id="gpu-name">--</strong></article>
+      <article class="card"><span>利用率</span><strong id="gpu-util">--</strong></article>
+      <article class="card"><span>显存</span><strong id="gpu-memory">--</strong></article>
+      <article class="card"><span>温度</span><strong id="gpu-temp">--</strong></article>
+      <article class="card"><span>功耗</span><strong id="gpu-power">--</strong></article>
+      <article class="card"><span>Driver / CUDA</span><strong id="gpu-version">--</strong></article>
+    </section>
+
+    <section class="grid charts">
+      <article class="panel"><h2>GPU 利用率</h2><canvas id="util-chart"></canvas></article>
+      <article class="panel"><h2>温度变化</h2><canvas id="temp-chart"></canvas></article>
+      <article class="panel"><h2>显存占用</h2><canvas id="memory-chart"></canvas></article>
+    </section>
+
+    <section class="panel history-panel">
+      <div class="panel-title"><h2>测试历史记录</h2><span class="muted">最近 10 次</span></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>时间</th><th>时长</th><th>平均利用率</th><th>最高温度</th><th>最大显存</th><th>状态</th></tr></thead>
+          <tbody id="test-history"><tr><td colspan="6" class="muted">暂无测试记录</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid lower">
+      <article class="panel controls">
+        <div class="panel-title"><h2>压力测试控制</h2><span id="stress-status" class="badge muted">未运行</span></div>
+        <label>测试时间（秒）<input id="duration" type="number" min="1" value="60"></label>
+        <label>矩阵规模<input id="size" type="number" min="1" step="256" value="2048"></label>
+        <div class="actions"><button id="start-stress">Start Stress Test</button><button id="stop-stress" class="secondary">Stop Stress Test</button></div>
+        <p id="stress-meta" class="muted">等待测试</p>
+      </article>
+      <article class="panel warnings">
+        <div class="panel-title"><h2>异常警告</h2><span id="alert-count" class="badge muted">0</span></div>
+        <div id="alerts"><p class="muted">暂无异常</p></div>
+      </article>
+    </section>
+
+    <section id="stress-summary" class="panel summary-panel hidden">
+      <div class="panel-title"><h2>Stress Test Completed</h2><span id="summary-status" class="badge">--</span></div>
+      <div class="summary-grid">
+        <div><span>Duration</span><strong id="summary-duration">--</strong></div>
+        <div><span>Average GPU Usage</span><strong id="summary-average">--</strong></div>
+        <div><span>Peak Temperature</span><strong id="summary-temperature">--</strong></div>
+        <div><span>Peak Memory</span><strong id="summary-memory">--</strong></div>
+        <div><span>Status</span><strong id="summary-result">--</strong></div>
+      </div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

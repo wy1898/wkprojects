@@ -4,12 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gpu-platform"
-version = "0.1.1"
+version = "0.2.0"
 description = "GPU 计算环境部署与压力测试平台"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "rich>=13.7",
+    "Flask>=3.0",
     "torch>=2.0",
 ]
 

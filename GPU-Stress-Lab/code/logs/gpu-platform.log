@@ -1,0 +1,535 @@
+2026-07-29 16:30:41,930 ERROR stress failed: PyTorch 未安装，无法执行 CUDA 压力测试
+Traceback (most recent call last):
+  File "D:\xm project\GPU-Stress-Lab\code\src\gpu_platform\stress.py", line 113, in _load_torch
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\xm project\GPU-Stress-Lab\code\src\gpu_platform\stress.py", line 149, in run_stress
+    torch = _load_torch()
+  File "D:\xm project\GPU-Stress-Lab\code\src\gpu_platform\stress.py", line 115, in _load_torch
+    raise RuntimeError("PyTorch 未安装，无法执行 CUDA 压力测试") from exc
+RuntimeError: PyTorch 未安装，无法执行 CUDA 压力测试
+2026-07-29 16:55:18,307 INFO Starting dashboard on 127.0.0.1:5000
+2026-07-29 16:57:56,322 INFO stress sample device=0 utilization=5.0 temperature=53.0 memory=368.0
+2026-07-29 16:57:57,302 INFO stress sample device=0 utilization=80.0 temperature=57.0 memory=384.0
+2026-07-29 16:57:58,302 INFO stress sample device=0 utilization=92.0 temperature=57.0 memory=384.0
+2026-07-29 16:57:59,311 INFO stress sample device=0 utilization=92.0 temperature=58.0 memory=384.0
+2026-07-29 16:58:00,300 INFO stress sample device=0 utilization=92.0 temperature=59.0 memory=384.0
+2026-07-29 16:58:01,307 INFO stress sample device=0 utilization=92.0 temperature=59.0 memory=384.0
+2026-07-29 16:58:02,314 INFO stress sample device=0 utilization=92.0 temperature=60.0 memory=384.0
+2026-07-29 16:58:03,305 INFO stress sample device=0 utilization=91.0 temperature=60.0 memory=384.0
+2026-07-29 16:58:04,307 INFO stress sample device=0 utilization=92.0 temperature=60.0 memory=384.0
+2026-07-29 16:58:05,300 INFO stress sample device=0 utilization=92.0 temperature=61.0 memory=384.0
+2026-07-29 16:58:06,307 INFO stress sample device=0 utilization=92.0 temperature=61.0 memory=384.0
+2026-07-29 16:58:07,300 INFO stress sample device=0 utilization=92.0 temperature=62.0 memory=384.0
+2026-07-29 16:58:08,304 INFO stress sample device=0 utilization=92.0 temperature=62.0 memory=384.0
+2026-07-29 16:58:09,307 INFO stress sample device=0 utilization=92.0 temperature=63.0 memory=384.0
+2026-07-29 16:58:10,303 INFO stress sample device=0 utilization=92.0 temperature=63.0 memory=384.0
+2026-07-29 16:58:11,304 INFO stress sample device=0 utilization=92.0 temperature=63.0 memory=384.0
+2026-07-29 16:58:12,307 INFO stress sample device=0 utilization=92.0 temperature=64.0 memory=384.0
+2026-07-29 16:58:13,303 INFO stress sample device=0 utilization=91.0 temperature=64.0 memory=384.0
+2026-07-29 16:58:13,975 INFO stress finished device=0 iterations=1699 normal=False
+2026-07-29 17:17:34,913 INFO Starting dashboard on 127.0.0.1:5000
+2026-07-29 17:17:57,464 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:17:58,365 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:17:59,361 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:00,368 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:01,376 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:02,361 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:03,359 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:04,366 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:05,372 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:06,368 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:07,374 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:08,371 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:09,366 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:10,357 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:11,364 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:12,371 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:13,364 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:14,370 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:15,364 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:16,369 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:17,125 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:17,416 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:18,395 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:19,598 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:19,656 INFO stress sample device=0 utilization=5.0 temperature=55.0 memory=349.0
+2026-07-29 17:18:20,354 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:20,649 INFO stress sample device=0 utilization=67.0 temperature=61.0 memory=365.0
+2026-07-29 17:18:21,346 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:21,655 INFO stress sample device=0 utilization=93.0 temperature=62.0 memory=365.0
+2026-07-29 17:18:22,352 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:22,657 INFO stress sample device=0 utilization=92.0 temperature=63.0 memory=365.0
+2026-07-29 17:18:23,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:23,647 INFO stress sample device=0 utilization=92.0 temperature=63.0 memory=365.0
+2026-07-29 17:18:24,349 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:24,654 INFO stress sample device=0 utilization=93.0 temperature=64.0 memory=365.0
+2026-07-29 17:18:25,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:25,645 INFO stress sample device=0 utilization=92.0 temperature=64.0 memory=365.0
+2026-07-29 17:18:26,349 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:26,656 INFO stress sample device=0 utilization=93.0 temperature=65.0 memory=365.0
+2026-07-29 17:18:27,341 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:27,657 INFO stress sample device=0 utilization=93.0 temperature=65.0 memory=365.0
+2026-07-29 17:18:28,330 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:28,662 INFO stress sample device=0 utilization=91.0 temperature=66.0 memory=365.0
+2026-07-29 17:18:29,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:29,642 INFO stress sample device=0 utilization=91.0 temperature=66.0 memory=365.0
+2026-07-29 17:18:30,338 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:30,660 INFO stress sample device=0 utilization=93.0 temperature=66.0 memory=365.0
+2026-07-29 17:18:31,332 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:31,661 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=365.0
+2026-07-29 17:18:32,351 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:32,659 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=365.0
+2026-07-29 17:18:33,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:33,649 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=365.0
+2026-07-29 17:18:34,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:34,653 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=365.0
+2026-07-29 17:18:35,342 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:35,660 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=367.0
+2026-07-29 17:18:36,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:36,651 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=364.0
+2026-07-29 17:18:37,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:37,656 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=364.0
+2026-07-29 17:18:38,351 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:38,659 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=364.0
+2026-07-29 17:18:39,349 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:39,651 INFO stress sample device=0 utilization=92.0 temperature=70.0 memory=364.0
+2026-07-29 17:18:39,708 INFO stress finished device=0 iterations=1923 normal=True
+2026-07-29 17:18:39,712 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:39,716 ERROR 无法写入历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code.tmp' -> '/mnt/d/xm project/GPU-Stress-Lab/code'
+Traceback (most recent call last):
+  File "/mnt/d/xm project/GPU-Stress-Lab/code/src/gpu_platform/history.py", line 78, in append_history
+    temp_path.replace(path)
+  File "/usr/lib/python3.10/pathlib.py", line 1247, in replace
+    self._accessor.replace(self, target)
+IsADirectoryError: [Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code.tmp' -> '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:40,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:41,351 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:42,345 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:43,346 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:44,355 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:45,353 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:46,361 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:47,352 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:48,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:49,354 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:50,355 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:51,353 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:52,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:53,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:54,351 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:55,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:56,346 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:57,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:58,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:18:59,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:00,347 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:01,342 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:02,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:03,350 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:04,349 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:05,350 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:06,347 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:07,346 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:08,345 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:09,353 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:10,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:11,341 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:12,345 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:13,346 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:14,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:15,338 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:16,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:17,351 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:18,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:19,341 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:20,347 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:21,336 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:22,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:23,342 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:24,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:25,342 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:26,342 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:27,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:28,365 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:29,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:30,353 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:31,349 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:32,350 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:33,341 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:34,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:35,346 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:36,334 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:37,339 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:38,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:39,339 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:40,358 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:41,345 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:42,354 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:43,356 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:44,342 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:45,352 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:46,341 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:47,350 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:48,356 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:49,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:50,354 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:51,362 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:52,355 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:53,351 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:54,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:55,339 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:56,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:57,309 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:57,378 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:57,513 INFO stress sample device=0 utilization=5.0 temperature=54.0 memory=349.0
+2026-07-29 17:19:58,337 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:58,476 INFO stress sample device=0 utilization=39.0 temperature=61.0 memory=365.0
+2026-07-29 17:19:59,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:19:59,472 INFO stress sample device=0 utilization=92.0 temperature=62.0 memory=365.0
+2026-07-29 17:20:00,349 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:00,477 INFO stress sample device=0 utilization=93.0 temperature=63.0 memory=365.0
+2026-07-29 17:20:01,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:01,480 INFO stress sample device=0 utilization=92.0 temperature=64.0 memory=364.0
+2026-07-29 17:20:02,330 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:02,472 INFO stress sample device=0 utilization=92.0 temperature=64.0 memory=361.0
+2026-07-29 17:20:03,338 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:03,476 INFO stress sample device=0 utilization=92.0 temperature=65.0 memory=361.0
+2026-07-29 17:20:04,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:04,485 INFO stress sample device=0 utilization=92.0 temperature=65.0 memory=361.0
+2026-07-29 17:20:05,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:05,481 INFO stress sample device=0 utilization=92.0 temperature=66.0 memory=361.0
+2026-07-29 17:20:06,356 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:06,475 INFO stress sample device=0 utilization=92.0 temperature=66.0 memory=357.0
+2026-07-29 17:20:07,346 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:07,485 INFO stress sample device=0 utilization=92.0 temperature=66.0 memory=364.0
+2026-07-29 17:20:08,345 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:08,480 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=365.0
+2026-07-29 17:20:09,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:09,477 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=365.0
+2026-07-29 17:20:10,339 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:10,471 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=365.0
+2026-07-29 17:20:11,346 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:11,482 INFO stress sample device=0 utilization=93.0 temperature=68.0 memory=365.0
+2026-07-29 17:20:12,409 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:12,476 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=365.0
+2026-07-29 17:20:13,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:13,480 INFO stress sample device=0 utilization=93.0 temperature=69.0 memory=365.0
+2026-07-29 17:20:14,352 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:14,480 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=367.0
+2026-07-29 17:20:15,341 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:15,481 INFO stress sample device=0 utilization=92.0 temperature=70.0 memory=364.0
+2026-07-29 17:20:16,333 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:16,469 INFO stress sample device=0 utilization=92.0 temperature=70.0 memory=364.0
+2026-07-29 17:20:17,350 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:17,476 INFO stress sample device=0 utilization=93.0 temperature=70.0 memory=364.0
+2026-07-29 17:20:17,532 INFO stress finished device=0 iterations=1915 normal=True
+2026-07-29 17:20:17,537 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:17,540 ERROR 无法写入历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code.tmp' -> '/mnt/d/xm project/GPU-Stress-Lab/code'
+Traceback (most recent call last):
+  File "/mnt/d/xm project/GPU-Stress-Lab/code/src/gpu_platform/history.py", line 78, in append_history
+    temp_path.replace(path)
+  File "/usr/lib/python3.10/pathlib.py", line 1247, in replace
+    self._accessor.replace(self, target)
+IsADirectoryError: [Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code.tmp' -> '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:18,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:19,342 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:20,338 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:21,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:22,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:23,342 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:24,346 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:25,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:26,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:27,347 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:28,336 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:29,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:30,342 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:31,347 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:32,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:33,345 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:34,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:35,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:36,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:37,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:38,347 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:39,346 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:40,342 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:41,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:42,342 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:43,345 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:44,338 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:45,341 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:46,361 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:47,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:48,356 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:49,347 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:50,360 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:51,355 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:52,350 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:53,353 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:54,351 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:55,352 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:56,347 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:57,351 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:58,353 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:20:59,352 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:00,366 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:01,356 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:02,341 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:03,350 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:04,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:05,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:06,341 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:07,352 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:08,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:09,351 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:10,349 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:11,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:12,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:13,345 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:14,354 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:15,355 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:16,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:17,351 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:18,345 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:19,349 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:20,347 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:21,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:22,345 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:23,349 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:24,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:25,348 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:26,345 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:27,345 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:28,346 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:29,345 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:30,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:31,345 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:32,342 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:33,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:34,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:35,349 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:36,344 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:37,342 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:38,361 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:39,362 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:40,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:41,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:42,343 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:43,338 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:44,357 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:45,337 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:46,341 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:47,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:48,338 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:49,341 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:50,342 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:51,337 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:52,347 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:53,339 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:54,337 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:55,339 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:56,340 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:57,338 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:57,868 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:58,862 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:21:59,869 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:00,864 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:01,866 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:02,874 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:03,870 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:04,868 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:05,881 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:06,883 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:07,870 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:08,876 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:09,868 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:10,869 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:11,870 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:12,869 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:14,034 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:15,030 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:16,034 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:17,032 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:18,034 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:19,029 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:20,023 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:21,034 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:22:21,881 WARNING 无法读取历史文件：[Errno 21] Is a directory: '/mnt/d/xm project/GPU-Stress-Lab/code'
+2026-07-29 17:32:45,292 INFO Starting dashboard on 127.0.0.1:5000
+2026-07-29 17:33:07,326 INFO stress sample device=0 utilization=5.0 temperature=56.0 memory=352.0
+2026-07-29 17:33:08,340 INFO stress sample device=0 utilization=25.0 temperature=61.0 memory=368.0
+2026-07-29 17:33:09,345 INFO stress sample device=0 utilization=92.0 temperature=62.0 memory=368.0
+2026-07-29 17:33:10,369 INFO stress sample device=0 utilization=91.0 temperature=60.0 memory=368.0
+2026-07-29 17:33:11,326 INFO stress sample device=0 utilization=88.0 temperature=63.0 memory=368.0
+2026-07-29 17:33:12,323 INFO stress sample device=0 utilization=93.0 temperature=64.0 memory=368.0
+2026-07-29 17:33:13,317 INFO stress sample device=0 utilization=93.0 temperature=65.0 memory=368.0
+2026-07-29 17:33:14,343 INFO stress sample device=0 utilization=93.0 temperature=65.0 memory=368.0
+2026-07-29 17:33:15,339 INFO stress sample device=0 utilization=91.0 temperature=65.0 memory=368.0
+2026-07-29 17:33:16,315 INFO stress sample device=0 utilization=91.0 temperature=66.0 memory=366.0
+2026-07-29 17:33:17,332 INFO stress sample device=0 utilization=93.0 temperature=66.0 memory=366.0
+2026-07-29 17:33:18,334 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=366.0
+2026-07-29 17:33:19,340 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=367.0
+2026-07-29 17:33:20,333 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=367.0
+2026-07-29 17:33:21,342 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=367.0
+2026-07-29 17:33:22,332 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=367.0
+2026-07-29 17:33:23,326 INFO stress sample device=0 utilization=93.0 temperature=68.0 memory=367.0
+2026-07-29 17:33:24,324 INFO stress sample device=0 utilization=93.0 temperature=69.0 memory=367.0
+2026-07-29 17:33:25,341 INFO stress sample device=0 utilization=93.0 temperature=69.0 memory=367.0
+2026-07-29 17:33:26,332 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=367.0
+2026-07-29 17:33:27,340 INFO stress sample device=0 utilization=93.0 temperature=70.0 memory=369.0
+2026-07-29 17:33:28,331 INFO stress sample device=0 utilization=92.0 temperature=70.0 memory=369.0
+2026-07-29 17:33:29,334 INFO stress sample device=0 utilization=93.0 temperature=71.0 memory=366.0
+2026-07-29 17:33:30,325 INFO stress sample device=0 utilization=92.0 temperature=71.0 memory=366.0
+2026-07-29 17:33:31,333 INFO stress sample device=0 utilization=93.0 temperature=71.0 memory=366.0
+2026-07-29 17:33:32,334 INFO stress sample device=0 utilization=92.0 temperature=71.0 memory=366.0
+2026-07-29 17:33:33,320 INFO stress sample device=0 utilization=92.0 temperature=71.0 memory=366.0
+2026-07-29 17:33:34,332 INFO stress sample device=0 utilization=93.0 temperature=72.0 memory=367.0
+2026-07-29 17:33:34,922 INFO stress finished device=0 iterations=2639 normal=False
+2026-07-29 17:33:54,100 INFO stress sample device=0 utilization=5.0 temperature=60.0 memory=351.0
+2026-07-29 17:33:55,002 INFO stress sample device=0 utilization=88.0 temperature=64.0 memory=367.0
+2026-07-29 17:33:55,995 INFO stress sample device=0 utilization=92.0 temperature=65.0 memory=367.0
+2026-07-29 17:33:56,999 INFO stress sample device=0 utilization=93.0 temperature=66.0 memory=367.0
+2026-07-29 17:33:58,006 INFO stress sample device=0 utilization=93.0 temperature=66.0 memory=367.0
+2026-07-29 17:33:59,009 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=367.0
+2026-07-29 17:34:00,002 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=367.0
+2026-07-29 17:34:01,009 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=367.0
+2026-07-29 17:34:01,996 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=367.0
+2026-07-29 17:34:03,004 INFO stress sample device=0 utilization=93.0 temperature=68.0 memory=367.0
+2026-07-29 17:34:04,012 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=367.0
+2026-07-29 17:34:05,004 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=367.0
+2026-07-29 17:34:06,009 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=367.0
+2026-07-29 17:34:07,010 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=368.0
+2026-07-29 17:34:08,004 INFO stress sample device=0 utilization=92.0 temperature=70.0 memory=368.0
+2026-07-29 17:34:08,993 INFO stress sample device=0 utilization=93.0 temperature=70.0 memory=368.0
+2026-07-29 17:34:09,045 INFO stress finished device=0 iterations=1422 normal=True
+2026-07-29 17:34:25,335 INFO stress sample device=0 utilization=5.0 temperature=61.0 memory=351.0
+2026-07-29 17:34:26,252 INFO stress sample device=0 utilization=81.0 temperature=66.0 memory=367.0
+2026-07-29 17:34:27,249 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=367.0
+2026-07-29 17:34:28,243 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=367.0
+2026-07-29 17:34:29,251 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=367.0
+2026-07-29 17:34:30,238 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=367.0
+2026-07-29 17:34:31,246 INFO stress sample device=0 utilization=93.0 temperature=69.0 memory=367.0
+2026-07-29 17:34:32,257 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=367.0
+2026-07-29 17:34:33,244 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=367.0
+2026-07-29 17:34:34,254 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=367.0
+2026-07-29 17:34:35,253 INFO stress sample device=0 utilization=92.0 temperature=70.0 memory=368.0
+2026-07-29 17:34:35,315 INFO stress finished device=0 iterations=945 normal=True
+2026-07-29 17:34:48,105 INFO stress sample device=0 utilization=21.0 temperature=62.0 memory=350.0
+2026-07-29 17:34:49,059 INFO stress sample device=0 utilization=21.0 temperature=67.0 memory=366.0
+2026-07-29 17:34:50,068 INFO stress sample device=0 utilization=89.0 temperature=67.0 memory=366.0
+2026-07-29 17:34:51,059 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=366.0
+2026-07-29 17:34:52,060 INFO stress sample device=0 utilization=93.0 temperature=68.0 memory=366.0
+2026-07-29 17:34:53,058 INFO stress sample device=0 utilization=93.0 temperature=69.0 memory=366.0
+2026-07-29 17:34:54,058 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=369.0
+2026-07-29 17:34:55,059 INFO stress sample device=0 utilization=93.0 temperature=70.0 memory=366.0
+2026-07-29 17:34:56,061 INFO stress sample device=0 utilization=92.0 temperature=70.0 memory=366.0
+2026-07-29 17:34:57,063 INFO stress sample device=0 utilization=92.0 temperature=70.0 memory=366.0
+2026-07-29 17:34:58,064 INFO stress sample device=0 utilization=92.0 temperature=70.0 memory=366.0
+2026-07-29 17:34:58,121 INFO stress finished device=0 iterations=941 normal=True
+2026-07-29 17:40:13,192 INFO Starting dashboard on 127.0.0.1:5000
+2026-07-29 17:40:33,284 INFO stress sample device=0 utilization=8.0 temperature=54.0 memory=351.0
+2026-07-29 17:40:34,275 INFO stress sample device=0 utilization=90.0 temperature=61.0 memory=367.0
+2026-07-29 17:40:35,278 INFO stress sample device=0 utilization=92.0 temperature=62.0 memory=367.0
+2026-07-29 17:40:36,276 INFO stress sample device=0 utilization=91.0 temperature=63.0 memory=367.0
+2026-07-29 17:40:37,266 INFO stress sample device=0 utilization=91.0 temperature=63.0 memory=367.0
+2026-07-29 17:40:38,276 INFO stress sample device=0 utilization=91.0 temperature=64.0 memory=367.0
+2026-07-29 17:40:39,275 INFO stress sample device=0 utilization=93.0 temperature=65.0 memory=367.0
+2026-07-29 17:40:40,269 INFO stress sample device=0 utilization=91.0 temperature=65.0 memory=367.0
+2026-07-29 17:40:41,274 INFO stress sample device=0 utilization=92.0 temperature=66.0 memory=367.0
+2026-07-29 17:40:42,276 INFO stress sample device=0 utilization=92.0 temperature=66.0 memory=367.0
+2026-07-29 17:40:43,272 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=367.0
+2026-07-29 17:40:44,206 INFO stress finished device=0 iterations=1052 normal=False
+2026-07-29 17:40:58,559 INFO stress sample device=0 utilization=14.0 temperature=58.0 memory=352.0
+2026-07-29 17:40:59,448 INFO stress sample device=0 utilization=92.0 temperature=63.0 memory=368.0
+2026-07-29 17:41:00,443 INFO stress sample device=0 utilization=92.0 temperature=63.0 memory=368.0
+2026-07-29 17:41:01,447 INFO stress sample device=0 utilization=92.0 temperature=64.0 memory=368.0
+2026-07-29 17:41:02,455 INFO stress sample device=0 utilization=92.0 temperature=64.0 memory=363.0
+2026-07-29 17:41:03,454 INFO stress sample device=0 utilization=91.0 temperature=65.0 memory=363.0
+2026-07-29 17:41:04,462 INFO stress sample device=0 utilization=91.0 temperature=65.0 memory=363.0
+2026-07-29 17:41:05,455 INFO stress sample device=0 utilization=91.0 temperature=66.0 memory=363.0
+2026-07-29 17:41:06,442 INFO stress sample device=0 utilization=91.0 temperature=66.0 memory=363.0
+2026-07-29 17:41:07,451 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=366.0
+2026-07-29 17:41:08,459 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=366.0
+2026-07-29 17:41:08,515 INFO stress finished device=0 iterations=950 normal=True
+2026-07-29 17:41:13,648 INFO stress sample device=0 utilization=15.0 temperature=62.0 memory=350.0
+2026-07-29 17:41:14,529 INFO stress sample device=0 utilization=92.0 temperature=66.0 memory=369.0
+2026-07-29 17:41:15,521 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=372.0
+2026-07-29 17:41:16,530 INFO stress sample device=0 utilization=93.0 temperature=67.0 memory=372.0
+2026-07-29 17:41:17,529 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=372.0
+2026-07-29 17:41:18,523 INFO stress sample device=0 utilization=91.0 temperature=68.0 memory=372.0
+2026-07-29 17:41:19,528 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=372.0
+2026-07-29 17:41:20,533 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=358.0
+2026-07-29 17:41:21,524 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=358.0
+2026-07-29 17:41:22,528 INFO stress sample device=0 utilization=91.0 temperature=69.0 memory=358.0
+2026-07-29 17:41:23,536 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=358.0
+2026-07-29 17:41:23,590 INFO stress finished device=0 iterations=948 normal=True
+2026-07-29 17:46:15,293 INFO Starting dashboard on 127.0.0.1:5000
+2026-07-29 17:58:31,423 INFO Starting dashboard on 127.0.0.1:5000
+2026-07-29 18:03:04,826 INFO stress sample device=0 utilization=5.0 temperature=54.0 memory=436.0
+2026-07-29 18:03:05,828 INFO stress sample device=0 utilization=92.0 temperature=58.0 memory=452.0
+2026-07-29 18:03:06,821 INFO stress sample device=0 utilization=91.0 temperature=59.0 memory=452.0
+2026-07-29 18:03:07,829 INFO stress sample device=0 utilization=92.0 temperature=60.0 memory=452.0
+2026-07-29 18:03:08,813 INFO stress sample device=0 utilization=90.0 temperature=60.0 memory=452.0
+2026-07-29 18:03:09,825 INFO stress sample device=0 utilization=92.0 temperature=61.0 memory=452.0
+2026-07-29 18:03:10,827 INFO stress sample device=0 utilization=91.0 temperature=61.0 memory=452.0
+2026-07-29 18:03:11,821 INFO stress sample device=0 utilization=91.0 temperature=62.0 memory=452.0
+2026-07-29 18:03:12,822 INFO stress sample device=0 utilization=91.0 temperature=62.0 memory=452.0
+2026-07-29 18:03:13,828 INFO stress sample device=0 utilization=91.0 temperature=63.0 memory=452.0
+2026-07-29 18:03:14,824 INFO stress sample device=0 utilization=91.0 temperature=63.0 memory=452.0
+2026-07-29 18:03:15,810 INFO stress sample device=0 utilization=90.0 temperature=64.0 memory=452.0
+2026-07-29 18:03:16,818 INFO stress sample device=0 utilization=92.0 temperature=64.0 memory=452.0
+2026-07-29 18:03:17,829 INFO stress sample device=0 utilization=91.0 temperature=64.0 memory=452.0
+2026-07-29 18:03:18,831 INFO stress sample device=0 utilization=91.0 temperature=65.0 memory=452.0
+2026-07-29 18:03:19,820 INFO stress sample device=0 utilization=91.0 temperature=65.0 memory=452.0
+2026-07-29 18:03:20,829 INFO stress sample device=0 utilization=92.0 temperature=65.0 memory=452.0
+2026-07-29 18:03:21,818 INFO stress sample device=0 utilization=91.0 temperature=66.0 memory=452.0
+2026-07-29 18:03:22,823 INFO stress sample device=0 utilization=92.0 temperature=66.0 memory=452.0
+2026-07-29 18:03:23,824 INFO stress sample device=0 utilization=91.0 temperature=67.0 memory=452.0
+2026-07-29 18:03:24,820 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=452.0
+2026-07-29 18:03:25,819 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=452.0
+2026-07-29 18:03:26,812 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=455.0
+2026-07-29 18:03:27,821 INFO stress sample device=0 utilization=92.0 temperature=67.0 memory=455.0
+2026-07-29 18:03:28,811 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=451.0
+2026-07-29 18:03:29,821 INFO stress sample device=0 utilization=93.0 temperature=68.0 memory=451.0
+2026-07-29 18:03:30,824 INFO stress sample device=0 utilization=92.0 temperature=68.0 memory=451.0
+2026-07-29 18:03:31,827 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=451.0
+2026-07-29 18:03:32,824 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=451.0
+2026-07-29 18:03:33,825 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=451.0
+2026-07-29 18:03:34,834 INFO stress sample device=0 utilization=92.0 temperature=69.0 memory=451.0
+2026-07-29 18:03:35,816 INFO stress sample device=0 utilization=90.0 temperature=70.0 memory=451.0
+2026-07-29 18:03:36,815 INFO stress sample device=0 utilization=92.0 temperature=72.0 memory=451.0
+2026-07-29 18:03:37,820 INFO stress sample device=0 utilization=89.0 temperature=70.0 memory=444.0
+2026-07-29 18:03:38,827 INFO stress sample device=0 utilization=92.0 temperature=70.0 memory=451.0
+2026-07-29 18:03:39,820 INFO stress sample device=0 utilization=91.0 temperature=71.0 memory=452.0
+2026-07-29 18:03:40,823 INFO stress sample device=0 utilization=90.0 temperature=71.0 memory=452.0
+2026-07-29 18:03:41,828 INFO stress sample device=0 utilization=91.0 temperature=71.0 memory=452.0
+2026-07-29 18:03:42,813 INFO stress sample device=0 utilization=91.0 temperature=71.0 memory=452.0
+2026-07-29 18:03:43,824 INFO stress sample device=0 utilization=92.0 temperature=71.0 memory=452.0
+2026-07-29 18:03:44,813 INFO stress sample device=0 utilization=92.0 temperature=72.0 memory=452.0
+2026-07-29 18:03:45,817 INFO stress sample device=0 utilization=93.0 temperature=72.0 memory=448.0
+2026-07-29 18:03:46,824 INFO stress sample device=0 utilization=93.0 temperature=72.0 memory=451.0
+2026-07-29 18:03:47,815 INFO stress sample device=0 utilization=92.0 temperature=72.0 memory=457.0
+2026-07-29 18:03:48,820 INFO stress sample device=0 utilization=92.0 temperature=72.0 memory=457.0
+2026-07-29 18:03:49,828 INFO stress sample device=0 utilization=92.0 temperature=72.0 memory=448.0
+2026-07-29 18:03:50,814 INFO stress sample device=0 utilization=91.0 temperature=73.0 memory=457.0
+2026-07-29 18:03:51,821 INFO stress sample device=0 utilization=92.0 temperature=73.0 memory=457.0
+2026-07-29 18:03:52,821 INFO stress sample device=0 utilization=92.0 temperature=73.0 memory=457.0
+2026-07-29 18:03:53,821 INFO stress sample device=0 utilization=91.0 temperature=73.0 memory=457.0
+2026-07-29 18:03:54,825 INFO stress sample device=0 utilization=92.0 temperature=73.0 memory=453.0
+2026-07-29 18:03:55,831 INFO stress sample device=0 utilization=91.0 temperature=74.0 memory=453.0
+2026-07-29 18:03:56,819 INFO stress sample device=0 utilization=92.0 temperature=74.0 memory=453.0
+2026-07-29 18:03:57,820 INFO stress sample device=0 utilization=92.0 temperature=74.0 memory=453.0
+2026-07-29 18:03:58,816 INFO stress sample device=0 utilization=92.0 temperature=74.0 memory=451.0
+2026-07-29 18:03:59,814 INFO stress sample device=0 utilization=92.0 temperature=77.0 memory=452.0
+2026-07-29 18:04:00,831 INFO stress sample device=0 utilization=91.0 temperature=74.0 memory=452.0
+2026-07-29 18:04:01,820 INFO stress sample device=0 utilization=90.0 temperature=75.0 memory=452.0
+2026-07-29 18:04:02,830 INFO stress sample device=0 utilization=92.0 temperature=75.0 memory=452.0
+2026-07-29 18:04:03,813 INFO stress sample device=0 utilization=91.0 temperature=75.0 memory=452.0
+2026-07-29 18:04:04,836 INFO stress sample device=0 utilization=92.0 temperature=75.0 memory=452.0
+2026-07-29 18:04:04,885 INFO stress finished device=0 iterations=5676 normal=True

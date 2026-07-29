@@ -43,6 +43,12 @@ def build_parser() -> argparse.ArgumentParser:
         "--interval", type=float, default=1, help="状态刷新间隔，单位秒（默认：1）"
     )
 
+    # Web Dashboard 使用惰性导入，Flask 缺失时不影响原有 CLI 命令。
+    web_parser = subparsers.add_parser("web", help="启动 Web Dashboard")
+    web_parser.add_argument("--host", default="127.0.0.1", help="监听地址（默认：127.0.0.1）")
+    web_parser.add_argument("--port", type=int, default=5000, help="监听端口（默认：5000）")
+    web_parser.add_argument("--device", type=int, default=0, help="GPU 编号（默认：0）")
+
     return parser
 
 
@@ -64,6 +70,16 @@ def main() -> None:
             size=args.size,
             interval=args.interval,
         )
+    elif args.command == "web":
+        try:
+            from .web import run_web
+        except ImportError as exc:
+            from .output import print_error
+
+            print_error(f"Web Dashboard 依赖未安装，请先安装 Flask：{exc}")
+            return
+
+        run_web(host=args.host, port=args.port, device=args.device)
     else:
         # 没有子命令时显示帮助，方便首次使用。
         parser.print_help()

@@ -1,5 +1,8 @@
 # 终端表格与颜色输出。
 rich>=13.7
 
+# V2 Web Dashboard。
+Flask>=3.0
+
 # CUDA 压力测试运行时；请按目标 CUDA/驱动环境选择对应 PyTorch 安装源。
 torch>=2.0
