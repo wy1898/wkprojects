@@ -1,0 +1,2 @@
+Aug 05 09:14:22 gpu-node kernel: NVRM: Xid (PCI:0000:65:00): 79, GPU has fallen off the bus.
+Aug 05 09:14:22 gpu-node kernel: NVRM: GPU 0000:65:00.0: GPU has fallen off the bus.

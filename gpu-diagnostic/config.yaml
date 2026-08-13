@@ -1,0 +1,5 @@
+# Tune these values for the server profile being diagnosed.
+temperature_threshold: 85
+expected_gpu_count: null
+expected_persistence_mode: null
+log_keywords: [NVRM, Xid, PCI, AER]

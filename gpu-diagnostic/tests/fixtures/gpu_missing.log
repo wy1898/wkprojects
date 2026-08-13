@@ -1,0 +1,2 @@
+No NVIDIA device is present in the captured lspci inventory.
+nvidia-smi: No devices were found

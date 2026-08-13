@@ -1,0 +1,2 @@
+[console_scripts]
+gpu-diag = gpu_diagnostic.cli.main:main

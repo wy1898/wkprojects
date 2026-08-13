@@ -1,0 +1,2 @@
+RuntimeError: CUDA initialization: CUDA driver initialization failed, you might not have a CUDA gpu.
+torch.cuda.is_available() = False

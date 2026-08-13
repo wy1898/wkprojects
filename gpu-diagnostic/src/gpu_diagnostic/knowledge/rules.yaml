@@ -1,0 +1,155 @@
+rules:
+  gpu_not_detected:
+    id: gpu_not_detected
+    name: GPU not detected on PCIe bus
+    severity: ERROR
+    category: [PCIe, Hardware]
+    match_conditions:
+      all_signals: [no_pci_nvidia]
+    description: "lspci completed but did not enumerate an NVIDIA device; this identifies an investigation scope, not a confirmed hardware failure."
+    possible_causes: ["PCIe enumeration issue", "BIOS configuration", "Power delivery issue", "Hardware fault"]
+    recommendations: ["Check lspci output", "Review BIOS and PCIe configuration", "Inspect GPU power and seating during approved maintenance"]
+  driver_communication_failure:
+    id: driver_communication_failure
+    name: NVIDIA driver communication failure
+    severity: ERROR
+    category: [Driver, GPU]
+    match_conditions:
+      all_signals: [pci_nvidia_detected, nvidia_smi_failed]
+    description: "The GPU is visible on PCIe but nvidia-smi failed, suggesting a driver-to-GPU communication problem rather than an absent PCI device."
+    possible_causes: ["NVIDIA driver module issue", "Driver-GPU communication failure", "GPU reset failure", "Hardware instability"]
+    recommendations: ["Review nvidia-smi stderr", "Check lsmod and dmesg", "Correlate with Xid and PCIe AER events"]
+  xid_79:
+    id: xid_79
+    name: Xid 79 GPU communication failure
+    severity: CRITICAL
+    category: [PCIe, Hardware]
+    match_conditions:
+      keywords: ["Xid 79", "fallen off the bus"]
+      regex: ["xid.*:\\s*79"]
+    description: "Kernel logs indicate that communication with a GPU was lost. The event requires correlation with PCIe, power, and workload evidence."
+    possible_causes: ["PCIe link instability", "Power issue", "GPU hardware fault", "System-level bus reset"]
+    recommendations: ["Inspect PCIe AER messages", "Check power cables and supply health", "Power cycle only with operational approval", "Test repeatability after maintenance"]
+  xid_31:
+    id: xid_31
+    name: Xid 31 GPU memory or page fault
+    severity: ERROR
+    category: [GPU, CUDA]
+    match_conditions:
+      keywords: ["Xid 31"]
+      regex: ["xid.*:\\s*31"]
+    description: "Kernel logs contain Xid 31, which can be associated with a GPU memory/page fault and needs workload context before root-cause assignment."
+    possible_causes: ["GPU memory access fault", "CUDA workload issue", "Driver instability", "Hardware instability"]
+    recommendations: ["Preserve surrounding dmesg lines", "Compare with application logs", "Check whether the event recurs with the same workload"]
+  xid_13:
+    id: xid_13
+    name: Xid 13 GPU exception
+    severity: ERROR
+    category: [GPU, Driver]
+    match_conditions:
+      keywords: ["Xid 13"]
+      regex: ["xid.*:\\s*13"]
+    description: "Kernel logs contain Xid 13, a GPU exception event that needs correlation with the active workload and driver logs."
+    possible_causes: ["Application or CUDA workload issue", "Driver issue", "GPU execution fault", "Hardware instability"]
+    recommendations: ["Preserve dmesg context", "Capture workload error logs", "Check whether a minimal workload reproduces the event"]
+  xid_48:
+    id: xid_48
+    name: Xid 48 ECC-related error
+    severity: ERROR
+    category: [Memory, GPU]
+    match_conditions:
+      keywords: ["Xid 48"]
+      regex: ["xid.*:\\s*48"]
+    description: "Kernel logs contain Xid 48, which may be associated with ECC or memory reliability events and requires counter/history review."
+    possible_causes: ["ECC memory event", "Memory reliability issue", "Transient hardware event", "GPU hardware fault"]
+    recommendations: ["Record ECC counters", "Check retired pages", "Compare with historical diagnostic runs before escalation"]
+  driver_module_missing:
+    id: driver_module_missing
+    name: NVIDIA driver module not loaded
+    severity: ERROR
+    category: [Driver, Linux]
+    match_conditions:
+      all_signals: [driver_module_missing]
+    description: "lsmod completed but did not show a loaded NVIDIA module."
+    possible_causes: ["Driver not installed", "DKMS build failure after kernel update", "Module load failure", "Driver conflict"]
+    recommendations: ["Run modinfo nvidia", "Review DKMS status", "Check kernel logs for module load errors"]
+  nvcc_unavailable:
+    id: nvcc_unavailable
+    name: CUDA toolkit compiler unavailable
+    severity: WARNING
+    category: [CUDA, Environment]
+    match_conditions:
+      all_signals: [nvcc_failed]
+    description: "The nvcc toolkit check did not complete. A driver may still be functional because CUDA Toolkit is optional for runtime-only hosts."
+    possible_causes: ["CUDA Toolkit not installed", "PATH configuration issue", "Multiple CUDA installations", "Restricted execution environment"]
+    recommendations: ["Review nvcc stderr", "Check CUDA_HOME and PATH", "Confirm whether this host requires a compiler toolkit"]
+  pytorch_cuda_unavailable:
+    id: pytorch_cuda_unavailable
+    name: PyTorch CUDA unavailable
+    severity: WARNING
+    category: [PyTorch, CUDA]
+    match_conditions:
+      all_signals: [pytorch_cuda_unavailable]
+    description: "PyTorch imported successfully but reported CUDA unavailable."
+    possible_causes: ["CPU-only PyTorch build", "Python environment mismatch", "CUDA shared-library issue", "Driver runtime issue"]
+    recommendations: ["Check torch.version.cuda", "Confirm the installed PyTorch build", "Compare the Python environment with nvidia-smi"]
+  driver_cuda_version_mismatch:
+    id: driver_cuda_version_mismatch
+    name: Driver and CUDA runtime compatibility error
+    severity: ERROR
+    category: [Driver, CUDA]
+    match_conditions:
+      keywords: ["CUDA driver version is insufficient", "driver version is insufficient for CUDA runtime version"]
+    description: "Collected output reports a driver/CUDA runtime compatibility error."
+    possible_causes: ["Driver version too old for the requested CUDA runtime", "Mixed CUDA libraries", "Incorrect environment path"]
+    recommendations: ["Compare NVIDIA driver and requested CUDA runtime versions", "Review LD_LIBRARY_PATH", "Use a supported driver/CUDA combination"]
+  pcie_aer_error:
+    id: pcie_aer_error
+    name: PCIe or AER error detected
+    severity: WARNING
+    category: [PCIe, Hardware]
+    match_conditions:
+      keywords: ["AER:", "PCIe Bus Error"]
+    description: "Kernel logs contain PCIe Advanced Error Reporting evidence."
+    possible_causes: ["PCIe signal integrity issue", "Slot or riser issue", "Firmware configuration", "Device instability"]
+    recommendations: ["Review AER severity and frequency", "Correlate with Xid events", "Validate the adapter in another slot if maintenance is possible"]
+  high_temperature:
+    id: high_temperature
+    name: High GPU temperature
+    severity: WARNING
+    category: [Thermal, GPU]
+    match_conditions:
+      all_signals: [high_temperature]
+    description: "A sampled GPU temperature met the 85C warning threshold; it is not a substitute for thermal history."
+    possible_causes: ["Insufficient cooling", "High workload", "Fan or airflow issue", "High ambient temperature"]
+    recommendations: ["Check workload and fan state", "Inspect airflow", "Use GPU-Stress-Lab for controlled thermal observation"]
+  ecc_uncorrectable:
+    id: ecc_uncorrectable
+    name: Uncorrectable ECC error reported
+    severity: ERROR
+    category: [Memory, GPU]
+    match_conditions:
+      all_signals: [ecc_uncorrectable]
+    description: "nvidia-smi reported a non-zero volatile uncorrectable ECC count."
+    possible_causes: ["Memory reliability issue", "Transient hardware event", "Persistent GPU hardware fault"]
+    recommendations: ["Record GPU UUID and counters", "Check retired pages and historical events", "Escalate for hardware validation if errors recur"]
+  persistence_mode_unexpected:
+    id: persistence_mode_unexpected
+    name: GPU persistence mode differs from configured expectation
+    severity: WARNING
+    category: [Driver, Configuration]
+    match_conditions:
+      all_signals: [persistence_mode_unexpected]
+    description: "A GPU persistence mode differs from the mode configured for this server profile."
+    possible_causes: ["Host policy differs from configured expectation", "Driver configuration change", "Operational configuration drift"]
+    recommendations: ["Confirm the intended persistence-mode policy", "Review nvidia-smi persistence mode output", "Change configuration only under the server operating procedure"]
+  gpu_count_below_expected:
+    id: gpu_count_below_expected
+    name: Detected GPU count is below expected inventory
+    severity: ERROR
+    category: [Inventory, PCIe]
+    match_conditions:
+      all_signals: [gpu_count_below_expected]
+    description: "The operator-provided expected GPU count exceeds the number detected by nvidia-smi."
+    possible_causes: ["GPU device unavailable", "PCIe enumeration issue", "Driver communication issue", "Inventory expectation mismatch"]
+    recommendations: ["Compare nvidia-smi and lspci device counts", "Review logs for Xid/AER events", "Verify expected inventory for this server"]
