@@ -1,32 +1,18 @@
 # GPU Diagnostic Platform
 
-Evidence-driven diagnostics for Linux NVIDIA GPU servers.
+面向 Linux NVIDIA GPU 服务器的、以证据为基础的自动化诊断工具。
 
-GPU Diagnostic Platform is a Python-based command-line tool for collecting host, NVIDIA, PCIe, driver, CUDA, PyTorch, and kernel-log evidence after a GPU server shows abnormal behavior. It applies a small, explainable rule set and produces findings with their supporting evidence, possible causes, and recommended next checks.
+GPU Diagnostic Platform 是一个基于 Python 的命令行工具，用于在 GPU 服务器出现异常后，采集主机、NVIDIA、PCIe、驱动、CUDA、PyTorch 以及内核日志信息。工具通过一组可解释的规则进行分析，并生成包含证据、可能原因和建议排查步骤的诊断结果。
 
-The project is intentionally a focused single-host diagnostic utility. It is not a commercial fleet-management product, a real-time monitoring system, or an automatic hardware-repair tool.
+本项目定位为聚焦单机故障排查的开源工程工具，不是商业化服务器管理平台、实时监控系统，也不是自动硬件维修工具。
 
-## What problem does it solve?
-
-When a Linux GPU server has an incident, an engineer commonly needs to collect and correlate several independent facts:
-
-- Is an NVIDIA GPU visible on the PCIe bus?
-- Does `nvidia-smi` work, and which GPU/driver/runtime values does it report?
-- Is the NVIDIA kernel module loaded?
-- Is the CUDA Toolkit available?
-- Can the current Python environment use CUDA through PyTorch?
-- Did the kernel log an NVRM Xid, PCIe, or AER event?
-- Is the detected GPU inventory smaller than the expected inventory?
-
-This tool automates that first evidence-gathering pass and turns it into a repeatable diagnostic artifact. It does not claim that one log line proves a physical component has failed.
-
-## Diagnostic chain
+## 核心诊断链路
 
 ```text
 gpu-diag diagnose
         |
         v
-Collectors (Linux/NVIDIA commands)
+Collectors（Linux/NVIDIA 命令）
         |
         v
 DiagnosticSnapshot
@@ -35,136 +21,87 @@ DiagnosticSnapshot
 RuleEngine / Analyzer
         |
         v
-Finding (Evidence -> Possible Causes -> Recommendations)
+Finding（Evidence → Possible Causes → Recommendations）
         |
         v
 DiagnosticRun
         |
         v
-JSON report + static HTML report
+JSON 报告 + 静态 HTML 报告
 ```
 
-The separation is deliberate:
+Collector 负责获取事实并保存命令输出、错误信息和退出状态；Snapshot 是采集层与分析层之间的数据边界；Rule Engine 通过关键词、正则表达式和多个独立信号组合进行分析；Finding 描述诊断方向并引用具体证据；DiagnosticRun 表示一次完整诊断任务；Reporter 输出 JSON 和独立 HTML 文件。
 
-- Collectors acquire facts and preserve command output, errors, and exit status.
-- `DiagnosticSnapshot` provides a normalized boundary between collection and analysis.
-- The Rule Engine evaluates keywords, regular expressions, and combinations of independent signals.
-- A `Finding` describes a diagnostic direction and cites the evidence that caused the rule to match.
-- `DiagnosticRun` represents one complete operator-triggered diagnosis.
-- Reporters make the same run available as machine-readable JSON and a standalone human-readable HTML file.
+## 当前已实现的功能
 
-## Implemented capabilities
+- 通过 `nvidia-smi` 采集 GPU 型号、数量、UUID、PCI Bus ID、驱动、CUDA、显存、温度、ECC 和 Persistence Mode。
+- 通过 `lspci -nn` 枚举 PCIe 设备。
+- 通过 `lsmod` 检查 NVIDIA 内核模块。
+- 通过 `nvcc --version` 检查 CUDA Toolkit。
+- 检查当前 Python 环境中的 PyTorch CUDA 可用性。
+- 通过 `dmesg -T` 采集内核日志并按关键字筛选。
+- 采集 hostname、内核版本、架构和 `/etc/os-release`。
+- 结构化 Evidence：`source`、`matched`、`detail`。
+- 关键词、正则表达式和多信号组合规则。
+- 配置温度阈值、预期 GPU 数量、日志关键字和预期 Persistence Mode。
+- JSON 报告、静态 HTML 报告和 CLI。
+- Python `unittest` 回归测试及故障日志 fixtures。
 
-The following capabilities are present in the current codebase:
+## 当前支持的诊断场景
 
-- NVIDIA GPU information through `nvidia-smi`.
-- GPU count, GPU UUID, PCI Bus ID, driver version, CUDA version, memory, temperature, ECC counter, and Persistence Mode collection.
-- PCIe device enumeration through `lspci -nn`.
-- NVIDIA kernel-module inspection through `lsmod`.
-- CUDA Toolkit check through `nvcc --version`.
-- PyTorch CUDA availability check in the active Python interpreter.
-- Kernel log collection through `dmesg -T` with configurable keyword filtering.
-- Host identity collection: hostname, kernel version, architecture, and `/etc/os-release`.
-- Structured `Evidence` objects containing `source`, `matched`, and `detail`.
-- Rule matching using keywords, regular expressions, and multiple signal combinations.
-- Configurable temperature threshold, expected GPU count, log keywords, and expected Persistence Mode.
-- JSON report generation.
-- Standalone static HTML report generation; no web server is included.
-- CLI commands for collection and diagnosis.
-- Python `unittest` regression tests and realistic-format diagnostic log fixtures.
+规则库当前包含 15 条规则：
 
-## Supported diagnostic scenarios
+- PCIe 总线上未检测到 NVIDIA GPU。
+- PCIe 可见 NVIDIA GPU，但 `nvidia-smi` 失败。
+- Xid 13、Xid 31、Xid 48、Xid 79。
+- NVIDIA 驱动模块未加载。
+- CUDA Toolkit 编译器不可用。
+- PyTorch CUDA 不可用。
+- Driver/CUDA Runtime 兼容性错误。
+- PCIe/AER 错误。
+- GPU 温度超过配置阈值。
+- 不可纠正 ECC 错误。
+- Persistence Mode 与配置不一致。
+- 实际 GPU 数量低于预期。
 
-The rule library currently contains 15 rules covering these directions:
+规则提供可能原因和建议措施，不会将命中结果直接表述为绝对硬件故障。
 
-- NVIDIA GPU not detected on the PCIe bus.
-- NVIDIA GPU visible on PCIe but `nvidia-smi` fails.
-- Xid 13 GPU exception.
-- Xid 31 GPU memory/page-fault direction.
-- Xid 48 ECC-related event.
-- Xid 79 GPU communication loss / “fallen off the bus”.
-- NVIDIA driver module not loaded.
-- CUDA Toolkit compiler unavailable.
-- PyTorch CUDA unavailable.
-- Driver/CUDA runtime compatibility error.
-- PCIe or AER error.
-- Sampled GPU temperature above the configured threshold.
-- Uncorrectable ECC counter reported by `nvidia-smi`.
-- Persistence Mode differs from the configured expectation.
-- Detected GPU count is below the operator-provided expected inventory.
+## 基于证据的诊断
 
-These rules express possible causes such as PCIe instability, driver state, power delivery, workload behavior, environment configuration, or hardware instability. They do not convert a rule match into an absolute hardware verdict.
-
-## Evidence-based diagnosis
-
-The project is designed to avoid single-command conclusions. For example:
+工具不会简单地把“命令失败”解释为“GPU 损坏”。例如：
 
 ```text
-lspci detects an NVIDIA device
+lspci 检测到 NVIDIA 设备
         +
-nvidia-smi fails
+nvidia-smi 执行失败
         |
         v
-Possible issue: NVIDIA driver-to-GPU communication failure
+可能问题：NVIDIA 驱动与 GPU 之间的通信异常
 ```
 
-This is intentionally different from claiming that the GPU is absent or physically defective. A finding contains an evidence chain such as:
+每条 Finding 都遵循：
 
 ```text
-Evidence
-  source: lspci
-  matched: NVIDIA PCI device detected
-  detail: The adapter is visible on the PCI bus.
-
-Possible causes
-  - NVIDIA driver module issue
-  - Driver-GPU communication failure
-  - GPU reset failure
-  - Hardware instability
-
-Recommendations
-  - Review nvidia-smi stderr
-  - Check lsmod and dmesg
-  - Correlate with Xid and PCIe AER events
+Evidence → Possible Causes → Recommendations
 ```
 
-The output is a troubleshooting direction and an evidence-preserving next step, not an automatic repair action.
+因此输出的是排查方向和证据保留结果，而不是自动维修动作或最终硬件判定。
 
-## Project structure
+## 项目结构
 
 ```text
 gpu-diagnostic/
 ├── config.yaml
-├── scripts/
-│   └── gpu-diag.sh
+├── scripts/gpu-diag.sh
 ├── src/gpu_diagnostic/
 │   ├── analyzer/
-│   │   └── rule_engine.py
 │   ├── cli/
-│   │   └── main.py
 │   ├── collector/
-│   │   ├── command_runner.py
-│   │   ├── driver_collector.py
-│   │   ├── gpu_collector.py
-│   │   ├── host_collector.py
-│   │   ├── log_collector.py
-│   │   ├── pci_collector.py
-│   │   ├── runtime_collector.py
-│   │   └── system_collector.py
 │   ├── knowledge/
-│   │   └── rules.yaml
 │   ├── models/
-│   │   ├── finding.py
-│   │   ├── report.py
-│   │   ├── run.py
-│   │   └── snapshot.py
 │   ├── reporter/
-│   │   ├── html_reporter.py
-│   │   └── json_reporter.py
 │   ├── services/
-│   │   └── diagnostic_service.py
 │   └── utils/
-│       └── config.py
 ├── tests/
 │   ├── fixtures/
 │   ├── test_analyzer.py
@@ -175,33 +112,15 @@ gpu-diagnostic/
 └── requirements.txt
 ```
 
-### Module responsibilities
+`collector/` 负责 Linux/NVIDIA 证据采集；`models/` 定义 Snapshot、Finding、Run 等数据模型；`analyzer/` 执行规则；`knowledge/rules.yaml` 保存规则库；`reporter/` 生成 JSON 和 HTML；`services/` 编排完整流程；`cli/` 提供命令行入口。
 
-`collector/` contains the system-facing adapters. `CommandRunner` centralizes timeout handling, missing-command handling, permission errors, stdout/stderr capture, and return codes. The individual collectors do not decide root cause.
+## 环境要求与安装
 
-`models/` contains the data contracts exchanged between layers. `DiagnosticSnapshot` stores collected facts, `Finding` stores an explainable rule result, `DiagnosticRun` stores one complete task, and `DiagnosticReport` remains available as the earlier report model.
+- Python 3.10 或更高版本。
+- 目标运行环境为 Linux 主机。
+- 对应检查需要 `nvidia-smi`、`lspci`、`lsmod`、`dmesg`；`nvcc` 和 PyTorch 为可选检查项。
 
-`analyzer/` contains rule execution. The current `RuleEngine` uses a deliberately small YAML subset parser so the tool has no third-party runtime dependency on a minimally provisioned support host.
-
-`knowledge/rules.yaml` is the version-controlled rule library. Every rule includes an identifier, name, severity, category, match conditions, description, possible causes, and recommendations.
-
-`reporter/` contains output adapters. JSON is intended for automation and later processing; HTML is a single file for attaching to an incident or opening locally in a browser.
-
-`services/` coordinates the collect → analyze → report workflow.
-
-`cli/` provides the `gpu-diag` command-line interface.
-
-## Requirements and installation
-
-The project requires:
-
-- Python 3.10 or newer.
-- A Linux host is the target runtime environment.
-- NVIDIA utilities are needed for the corresponding checks: `nvidia-smi`, `lspci`, `lsmod`, `dmesg`, and optionally `nvcc` and PyTorch.
-
-The Python project currently declares no third-party runtime dependencies. Missing Linux commands and unavailable optional tools are recorded in the snapshot instead of terminating the complete diagnostic run.
-
-From the repository root:
+当前项目没有第三方 Python 运行时依赖。命令不存在或权限不足时，错误会保存到 Snapshot，不会使完整诊断任务中断。
 
 ```bash
 python3 -m venv .venv
@@ -209,48 +128,18 @@ source .venv/bin/activate
 python -m pip install -e .
 ```
 
-On a real Linux NVIDIA server, some commands may require appropriate privileges. The tool preserves permission errors as command evidence; it does not silently elevate privileges or modify the host.
-
-## CLI usage
-
-Show the available commands and options:
+## CLI 使用方式
 
 ```bash
 gpu-diag --help
-```
-
-Collect a snapshot and write report artifacts without running rule analysis:
-
-```bash
 gpu-diag collect
-```
-
-Run the complete diagnostic workflow:
-
-```bash
 gpu-diag diagnose
-```
-
-Provide an expected GPU inventory for a multi-GPU server:
-
-```bash
 gpu-diag diagnose --expected-gpus 4
-```
-
-Choose an output directory:
-
-```bash
 gpu-diag diagnose --output-dir reports/server-01
-```
-
-The shell launcher provides the same workflow without requiring package installation first:
-
-```bash
 ./scripts/gpu-diag.sh diagnose
-./scripts/gpu-diag.sh diagnose --expected-gpus 4
 ```
 
-The current CLI prints a concise summary similar to:
+当前 CLI 输出类似：
 
 ```text
 Diagnostic Summary:
@@ -262,11 +151,11 @@ JSON Report: reports/diagnostic_<run-id>.json
 HTML Report: reports/diagnostic_<run-id>.html
 ```
 
-`PASS` means no rule matched. It does not mean that every possible hardware or software condition has been proven healthy.
+`PASS` 表示没有已实现规则命中当前 Snapshot，不代表所有潜在问题都已排除。
 
-## Configuration
+## 配置文件
 
-The repository root contains [config.yaml](config.yaml):
+项目根目录的 `config.yaml`：
 
 ```yaml
 temperature_threshold: 85
@@ -275,109 +164,78 @@ expected_persistence_mode: null
 log_keywords: [NVRM, Xid, PCI, AER]
 ```
 
-Supported settings:
+支持的配置项：
 
-- `temperature_threshold`: sampled temperature in degrees Celsius used by the high-temperature rule.
-- `expected_gpu_count`: optional expected inventory. `null` disables the count comparison unless `--expected-gpus` is supplied.
-- `expected_persistence_mode`: optional expected value compared with the value reported by `nvidia-smi`.
-- `log_keywords`: keywords used by `LogCollector` when selecting relevant `dmesg` lines.
+- `temperature_threshold`：高温规则使用的采样温度阈值。
+- `expected_gpu_count`：可选的预期 GPU 数量；也可用 `--expected-gpus` 覆盖。
+- `expected_persistence_mode`：与 `nvidia-smi` 报告值进行比较。
+- `log_keywords`：LogCollector 筛选 `dmesg` 的关键字。
 
-The configuration loader is intentionally small and supports the format used by the checked-in file. It is not intended to be a general-purpose YAML implementation.
+## 报告
 
-## Reports
+每次诊断生成两个文件：
 
-Each diagnosis writes two artifacts under the selected output directory:
+- JSON：包含 run ID、时间、主机、状态、Snapshot、Collector 结果和结构化 Finding。
+- 静态 HTML：展示主机信息、状态、Finding、Evidence、Possible Causes 和 Recommendations。
 
-### JSON
+HTML 是独立文件，不是 Flask 应用、HTTP 服务或 Web Dashboard。
 
-The JSON artifact contains the run identifier, timestamp, hostname, status, finding count, host information, snapshot, collector results, and structured findings. Each finding includes:
+## 测试
 
-- severity and rule identifier;
-- title and description;
-- evidence source, matched text, and detail;
-- possible causes;
-- recommendations.
-
-### Static HTML
-
-The HTML artifact contains the same diagnostic context in a browser-readable layout, including host information, status, findings, evidence, possible causes, and recommendations. It is a standalone file generated by `HTMLReporter`; the project does not provide a Flask app, HTTP server, dashboard, or remote report store.
-
-## Testing
-
-Tests use Python's built-in `unittest` framework. The repository currently contains 11 tests and realistic-format log fixtures for Xid 13, Xid 31, Xid 79, CUDA errors, missing GPU evidence, and PCIe/AER errors.
-
-Run the suite from the repository root:
+当前仓库包含 11 项测试和多种故障日志 fixtures。运行：
 
 ```bash
 PYTHONPATH=src python3 -m unittest discover -s tests -v
 ```
 
-The tests cover:
+测试覆盖规则加载、关键词/正则匹配、PCIe 与 `nvidia-smi` 多源逻辑、Xid、GPU 数量、CUDA/PyTorch、配置、DiagnosticRun 状态、HTML 生成和 Persistence Mode。
 
-- structured rule loading;
-- keyword and regular-expression matching;
-- multi-source PCIe/`nvidia-smi` reasoning;
-- Xid and PCIe fixture analysis;
-- GPU inventory comparison;
-- CUDA and PyTorch findings;
-- configuration loading;
-- `DiagnosticRun` status calculation;
-- static HTML generation and HTML escaping;
-- Persistence Mode configuration matching.
+## 与 GPU-Stress-Lab 的关系
 
-The fixtures are log inputs for analyzer regression tests. They are not GPU simulation data and do not claim to represent a particular production server.
-
-## Relationship to GPU-Stress-Lab
-
-GPU Diagnostic Platform complements, rather than duplicates, GPU-Stress-Lab.
-
-GPU-Stress-Lab focuses on applying GPU workloads, observing runtime behavior, and displaying live temperature, utilization, memory, and stress-test information. GPU Diagnostic Platform starts after an abnormal condition is observed: it gathers Linux/NVIDIA evidence, correlates independent signals, and produces a report for troubleshooting.
-
-In a practical workflow:
+GPU-Stress-Lab 负责施加 GPU 工作负载、实时观察温度/利用率/显存并展示压力测试结果。GPU Diagnostic Platform 在异常出现后采集 Linux/NVIDIA 证据、关联信号并生成排查报告。
 
 ```text
-GPU-Stress-Lab: reproduce or observe an abnormal behavior
+GPU-Stress-Lab：复现或观察异常
         |
         v
-GPU Diagnostic Platform: collect evidence and provide investigation directions
+GPU Diagnostic Platform：采集证据并给出排查方向
 ```
 
-The diagnostic platform deliberately does not reimplement continuous monitoring or stress testing.
+本项目不会重新实现持续监控或压力测试。
 
-## Design principles
+## 设计原则
 
-1. Evidence before conclusion.
-2. Multiple signals are stronger than a single command result.
-3. Possible causes are preferable to absolute hardware claims.
-4. Linux and NVIDIA native tools are used as primary evidence sources.
-5. Collection, analysis, models, and reporting remain separate layers.
-6. Reports are both machine-readable and human-readable.
-7. Partial collection is useful: missing commands and permission failures are preserved as evidence.
-8. Diagnostic commands should be safe and observational by default.
+1. 先有证据，再形成结论。
+2. 多信号优于单命令假设。
+3. 使用可能原因，而不是绝对硬件结论。
+4. 优先使用 Linux/NVIDIA 原生工具。
+5. 分离采集、分析、模型和报告。
+6. 同时提供机器可读和人类可读报告。
+7. 缺失命令和权限错误也要保留为证据。
+8. 默认只进行观察和采集，不执行高风险修改。
 
-## Scope and limitations
+## 范围与限制
 
-The current project is intentionally bounded:
+- 主要面向单机 Linux NVIDIA GPU 环境。
+- WSL2、容器或受限环境可能限制 PCIe 和内核驱动检查。
+- 工具提供排查方向，不认证硬件已经失效。
+- 不会自动重置 GPU、卸载驱动、重启主机或修改系统配置。
+- 当前没有实时监控、Web Dashboard、远程管理、分布式诊断、AI 诊断或云服务。
+- `nvcc` 和 PyTorch 检查取决于当前环境是否安装。
+- `PASS` 仅表示当前规则未匹配。
 
-- It primarily targets single-host Linux NVIDIA GPU environments.
-- PCIe and kernel-driver checks may be incomplete or virtualized under WSL2, containers, or restricted environments.
-- It provides investigation directions, possible causes, and recommendations; it does not certify a component as failed.
-- It does not automatically reset GPUs, unload drivers, reboot hosts, or change system configuration.
-- It has no real-time monitoring loop, Web Dashboard, remote fleet management, distributed diagnosis, AI diagnosis, or cloud service.
-- Optional `nvcc` and PyTorch checks depend on what is installed in the current host/Python environment.
-- A `PASS` result means no implemented rule matched the collected snapshot, not that every possible failure mode was eliminated.
+## 未来计划
 
-## Future work
+以下均为尚未实现的方向：
 
-The following are possible future directions and are not implemented in the current release:
-
-- additional NVIDIA Xid and PCIe rule coverage;
-- stronger cross-source fault correlation;
-- support-bundle export and redaction;
-- server verification/baseline mode;
-- optional report history management;
-- carefully scoped remote diagnostic workflows.
+- 更多 NVIDIA Xid 和 PCIe 规则。
+- 更强的跨来源故障关联。
+- 诊断包导出与脱敏。
+- 服务器验收或基线模式。
+- 可选的报告历史管理。
+- 边界明确的远程诊断流程。
 
 ## License
 
-No license file is currently included in the repository. Add a license before publishing if you want to define reuse and contribution terms explicitly.
+当前仓库尚未包含 License 文件。如需公开发布并定义复用和贡献条款，请另行添加合适的开源许可证。
+
