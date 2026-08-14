@@ -1,0 +1,18 @@
+server:
+  expected:
+    cpu_sockets: {min: 2}
+    memory_gb: {min: 256}
+    gpu_count: {exact: 4}
+    storage_count: {min: 8}
+    network_interfaces: {min: 2}
+storage:
+  count: {exact: 8}
+  type: {exact: nvme}
+  min_capacity_gb: 900
+network:
+  physical_count: {exact: 2}
+  min_speed_mbps: 10000
+gpu:
+  count: {exact: 4}
+  model: {exact: "NVIDIA A100"}
+  min_memory_gb: 40

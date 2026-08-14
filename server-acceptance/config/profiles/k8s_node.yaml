@@ -1,0 +1,12 @@
+server:
+  expected:
+    cpu_sockets: {min: 1}
+    memory_gb: {min: 16}
+    storage_count: {min: 1}
+    network_interfaces: {min: 1}
+os:
+  architecture: {exact: x86_64}
+kubernetes:
+  container_runtime: optional
+  kubelet: optional
+  kubectl: optional
