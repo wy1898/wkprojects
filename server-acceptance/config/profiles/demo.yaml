@@ -1,0 +1,10 @@
+server:
+  expected:
+    cpu_sockets: {min: 1}
+    # An 8 GB WSL2 host commonly exposes about 7.5-7.7 GiB to free(1).
+    memory_gb: {min: 7.5}
+    storage_count: {min: 1}
+    network_interfaces: {min: 1}
+    gpu_count: {min: 0}
+os:
+  architecture: {exact: x86_64}

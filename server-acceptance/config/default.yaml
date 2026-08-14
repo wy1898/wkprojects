@@ -1,0 +1,10 @@
+server:
+  expected:
+    cpu_sockets:
+      min: 1
+    memory_gb:
+      min: 1
+    storage_count:
+      min: 1
+    network_interfaces:
+      min: 1

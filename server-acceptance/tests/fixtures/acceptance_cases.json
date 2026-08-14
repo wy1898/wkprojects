@@ -1,0 +1,4 @@
+[
+  {"name": "gpu_shortage", "inventory": {"gpu": {"gpus": ["A", "B", "C"]}}, "expected": {"gpu_count": 4}, "status": "FAIL"},
+  {"name": "gpu_match", "inventory": {"gpu": {"gpus": ["A", "B", "C", "D"]}}, "expected": {"gpu_count": 4}, "status": "PASS"}
+]

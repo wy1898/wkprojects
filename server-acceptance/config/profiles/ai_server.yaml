@@ -1,0 +1,17 @@
+server:
+  expected:
+    cpu_sockets: {min: 2}
+    memory_gb: {min: 512}
+    gpu_count: {exact: 8}
+    storage_count: {min: 8}
+    network_interfaces: {min: 2}
+storage:
+  count: {min: 8}
+  type: {exact: nvme}
+  min_capacity_gb: 900
+network:
+  physical_count: {min: 2}
+  min_speed_mbps: 10000
+gpu:
+  count: {exact: 8}
+  min_memory_gb: 40

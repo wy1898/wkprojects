@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "server-acceptance-platform"
+version = "0.1.0"
+description = "Linux server acceptance and delivery validation platform"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0", "Flask>=3.0"]
+
+[project.scripts]
+server-check = "server_acceptance.cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

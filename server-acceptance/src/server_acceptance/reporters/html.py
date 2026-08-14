@@ -1,0 +1,9 @@
+import html
+from pathlib import Path
+
+def render_html(report, path):
+    inv = report["inventory"]
+    summary = "".join(f"<li><b>{html.escape(k.upper())}:</b> {html.escape(str(v))}</li>" for k,v in [("OS", inv.get("os",{}).get("os")), ("CPU", inv.get("cpu",{}).get("model")), ("Memory", inv.get("memory",{}).get("total_bytes")), ("GPU", len(inv.get("gpu",{}).get("gpus",[]))), ("Storage", len(inv.get("storage",{}).get("devices",[])) if isinstance(inv.get("storage"),dict) else 0), ("Network", inv.get("network",{}).get("physical_count"))])
+    rows = "".join(f"<tr class='{r['status'].lower()}'><td>{html.escape(r['component'])}</td><td>{html.escape(str(r['expected']))}</td><td>{html.escape(str(r['actual']))}</td><td>{r['status']}</td><td>{html.escape(str(r.get('evidence','')))}</td><td>{html.escape(r.get('reason',r.get('message','')))}</td><td>{html.escape(r.get('recommendation',''))}</td></tr>" for r in report["validation_results"])
+    doc = f"<!doctype html><html><head><meta charset='utf-8'><title>Server Acceptance</title><style>body{{font:14px sans-serif;max-width:1400px;margin:2em auto}}table{{border-collapse:collapse;width:100%}}td,th{{border:1px solid #ddd;padding:8px;vertical-align:top}}.pass{{background:#e8f5e9}}.warning,.unavailable{{background:#fff8e1}}.fail{{background:#ffebee}}.error{{background:#fce4ec}}</style></head><body><h1>Server Acceptance Report</h1><p><b>Overall Status:</b> {report['status']} &nbsp; <b>Hostname:</b> {html.escape(report['hostname'])} &nbsp; <b>Timestamp:</b> {report['timestamp']}</p><h2>Server Summary</h2><ul>{summary}</ul><h2>Validation Results</h2><table><tr><th>Component</th><th>Expected</th><th>Actual</th><th>Status</th><th>Evidence</th><th>Reason</th><th>Recommendation</th></tr>{rows}</table></body></html>"
+    path.parent.mkdir(parents=True, exist_ok=True); path.write_text(doc, encoding="utf-8")

@@ -1,0 +1,53 @@
+{
+  "run_id": "demo-gpu-server-2026-01-01",
+  "timestamp": "2026-01-01T00:00:00+00:00",
+  "hostname": "gpu-acceptance-demo",
+  "profile": "gpu_server",
+  "status": "PASS",
+  "overall_status": "PASS",
+  "inventory": {
+    "cpu": {
+      "model": "Example Server CPU",
+      "sockets": 2,
+      "cores": 64,
+      "threads": 128,
+      "architecture": "x86_64"
+    },
+    "memory": {
+      "total_gb": 512
+    },
+    "storage": {
+      "devices": [
+        {"name": "nvme0n1", "type": "disk", "transport": "nvme", "size": "1T"},
+        {"name": "nvme1n1", "type": "disk", "transport": "nvme", "size": "1T"}
+      ]
+    },
+    "network": {
+      "physical_count": 2,
+      "interfaces": [
+        {"ifname": "eth0", "classification": "physical", "speed_mbps": 10000},
+        {"ifname": "eth1", "classification": "physical", "speed_mbps": 10000}
+      ]
+    },
+    "gpu": {
+      "gpus": [
+        {"model": "NVIDIA A100", "memory": "40 GB", "driver": "550.54.15", "uuid": "GPU-DEMO-0001", "pci_bus_id": "00000000:01:00.0"},
+        {"model": "NVIDIA A100", "memory": "40 GB", "driver": "550.54.15", "uuid": "GPU-DEMO-0002", "pci_bus_id": "00000000:02:00.0"},
+        {"model": "NVIDIA A100", "memory": "40 GB", "driver": "550.54.15", "uuid": "GPU-DEMO-0003", "pci_bus_id": "00000000:03:00.0"},
+        {"model": "NVIDIA A100", "memory": "40 GB", "driver": "550.54.15", "uuid": "GPU-DEMO-0004", "pci_bus_id": "00000000:04:00.0"}
+      ]
+    },
+    "os": {"distribution": "Ubuntu", "version": "22.04", "architecture": "x86_64"},
+    "raid": {"status": "AVAILABLE", "level": "RAID10", "state": "Optimal"}
+  },
+  "validation_results": [
+    {"component": "CPU", "status": "PASS", "expected": "2 sockets / 64 cores", "actual": "2 sockets / 64 cores"},
+    {"component": "Memory", "status": "PASS", "expected": "at least 512 GB", "actual": "512 GB"},
+    {"component": "Storage", "status": "PASS", "expected": "2 x 1T NVMe", "actual": "2 x 1T NVMe"},
+    {"component": "Network", "status": "PASS", "expected": "2 x 10GbE", "actual": "2 x 10GbE"},
+    {"component": "GPU", "status": "PASS", "expected": "4 x NVIDIA A100 / 40 GB", "actual": "4 x NVIDIA A100 / 40 GB"},
+    {"component": "OS", "status": "PASS", "expected": "Ubuntu 22.04 x86_64", "actual": "Ubuntu 22.04 x86_64"},
+    {"component": "RAID", "status": "PASS", "expected": "Optimal RAID10", "actual": "Optimal RAID10"}
+  ],
+  "note": "Synthetic demonstration data. Not collected from a real host."
+}
